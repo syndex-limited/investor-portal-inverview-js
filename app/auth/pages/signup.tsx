@@ -19,7 +19,7 @@ const SignupPage: BlitzPage = () => {
         initialValues={{ name: "", email: "", password: "" }}
         onSubmit={async (values) => {
           try {
-            await signup({ email: values.email, password: values.password })
+            await signup({ name: values.name, email: values.email, password: values.password })
             router.push("/")
           } catch (error) {
             if (error.code === "P2002" && error.meta?.target?.includes("email")) {
@@ -31,13 +31,9 @@ const SignupPage: BlitzPage = () => {
           }
         }}
       >
+        <LabelledTextField name="name" label="Name" placeholder="Name" />
         <LabelledTextField name="email" label="Email" placeholder="Email" />
-        <LabelledTextField
-          name="password"
-          label="Password"
-          placeholder="Password"
-          type="password"
-        />
+        <LabelledTextField name="password" label="Password" placeholder="Password" type="password" />
       </Form>
     </div>
   )

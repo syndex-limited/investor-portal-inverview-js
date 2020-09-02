@@ -2,7 +2,7 @@ import React, { useState, ReactNode, PropsWithoutRef } from "react"
 import { Formik, FormikProps, FormikErrors } from "formik"
 import * as z from "zod"
 
-type FormProps<FormValues> = {
+export type FormProps<FormValues> = {
   /** All your form fields */
   children: ReactNode
   /** Text to display in the submit button */
