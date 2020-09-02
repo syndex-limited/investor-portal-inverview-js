@@ -1,26 +1,32 @@
 import React, { PropsWithoutRef } from "react"
 import { useField, useFormikContext, ErrorMessage } from "formik"
 
-export interface LabelledTextFieldProps extends PropsWithoutRef<JSX.IntrinsicElements["input"]> {
+export interface LabelledNumberFieldProps extends PropsWithoutRef<JSX.IntrinsicElements["input"]> {
   /** Field name. */
   name: string
   /** Field label. */
   label: string
-  /** Field type. Doesn't include radio buttons and checkboxes */
-  type?: "text" | "password" | "email"
   outerProps?: PropsWithoutRef<JSX.IntrinsicElements["div"]>
 }
 
-export const LabelledTextField = React.forwardRef<HTMLInputElement, LabelledTextFieldProps>(
+export const LabelledNumberField = React.forwardRef<HTMLInputElement, LabelledNumberFieldProps>(
   ({ name, label, outerProps, ...props }, ref) => {
     const [input] = useField(name)
     const { isSubmitting } = useFormikContext()
+    const { value, ...otherInputProps } = input
 
     return (
       <div {...outerProps}>
         <label>
           {label}
-          <input {...input} disabled={isSubmitting} {...props} ref={ref} />
+          <input
+            {...otherInputProps}
+            type="number"
+            value={isNaN(value) ? "" : value}
+            disabled={isSubmitting}
+            {...props}
+            ref={ref}
+          />
         </label>
 
         <ErrorMessage name={name}>
@@ -52,4 +58,4 @@ export const LabelledTextField = React.forwardRef<HTMLInputElement, LabelledText
   }
 )
 
-export default LabelledTextField
+export default LabelledNumberField
