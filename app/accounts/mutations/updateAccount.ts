@@ -1,6 +1,7 @@
 import { SessionContext } from "blitz"
 import db, { AccountUpdateArgs } from "db"
 import { AccountInputType, AccountInput } from "../validations"
+import getAccount from "../queries/getAccount"
 
 type UpdateAccountInput = {
   where: AccountUpdateArgs["where"]
@@ -13,8 +14,9 @@ export default async function updateAccount(
 ) {
   ctx.session!.authorize()
   const data = AccountInput.parse(input)
+  const existingAccount = await getAccount({ where })
 
-  const account = await db.account.update({ where, data })
+  const account = await db.account.update({ where: { id: existingAccount.id }, data })
 
   return account
 }

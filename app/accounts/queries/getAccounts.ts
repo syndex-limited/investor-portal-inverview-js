@@ -1,20 +1,26 @@
 import { SessionContext } from "blitz"
 import db, { FindManyAccountArgs } from "db"
+import { getCurrentUserAccount } from "app/users/getCurrentUserAccount"
 
 type GetAccountsInput = {
   where?: FindManyAccountArgs["where"]
   orderBy?: FindManyAccountArgs["orderBy"]
   skip?: FindManyAccountArgs["skip"]
   take?: FindManyAccountArgs["take"]
-  // Only available if a model relationship exists
-  // include?: FindManyAccountArgs['include']
+  include?: FindManyAccountArgs["include"]
 }
 
 export default async function getAccounts(
-  { where, orderBy, skip = 0, take }: GetAccountsInput,
+  { where: inputWhere, orderBy, skip = 0, take }: GetAccountsInput,
   ctx: { session?: SessionContext } = {}
 ) {
   ctx.session!.authorize()
+  const account = await getCurrentUserAccount(null, ctx)
+
+  const where = {
+    OR: [{ id: account!.id }, { officers: { some: { secondaryAccountId: account!.id } } }],
+    AND: inputWhere,
+  }
 
   const accounts = await db.account.findMany({
     where,

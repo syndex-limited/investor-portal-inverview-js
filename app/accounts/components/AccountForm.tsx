@@ -1,7 +1,7 @@
 import React from "react"
 import { Form, FormProps } from "app/components/Form"
 import { AccountInput, AccountInputType } from "app/accounts/validations"
-import LabeledTextField from "app/components/LabeledTextField"
+import LabelledTextField from "app/components/LabelledTextField"
 import LabelledCheckbox from "app/components/LabelledCheckbox"
 
 type AccountFormProps = {
@@ -17,7 +17,7 @@ const AccountForm = ({ initialValues, onSubmit }: AccountFormProps) => {
       initialValues={initialValues}
       onSubmit={onSubmit}
     >
-      <LabeledTextField name="name" label="Name" placeholder="Name" />
+      <LabelledTextField name="name" label="Name" placeholder="Name" />
       <LabelledCheckbox name="verified" label="Verified?" />
     </Form>
   )

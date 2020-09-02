@@ -1,5 +1,5 @@
 import React from "react"
-import LabeledTextField from "app/components/LabeledTextField"
+import LabelledTextField from "app/components/LabelledTextField"
 import { IssueInput, IssueInputType } from "app/issues/validations"
 import { Form, FormProps } from "app/components/Form"
 import { LabelledNumberField } from "app/components/LabelledNumberField"
@@ -17,7 +17,7 @@ const IssueForm = ({ initialValues, onSubmit }: IssueFormProps) => {
       initialValues={initialValues}
       onSubmit={onSubmit}
     >
-      <LabeledTextField name="name" label="Name" placeholder="Name" />
+      <LabelledTextField name="name" label="Name" placeholder="Name" />
       <LabelledNumberField
         name="minimumQuantity"
         label="Minimum quantity"

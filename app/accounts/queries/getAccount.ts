@@ -1,5 +1,6 @@
 import { NotFoundError, SessionContext } from "blitz"
 import db, { FindOneAccountArgs } from "db"
+import getAccounts from "./getAccounts"
 
 type GetAccountInput = {
   where: FindOneAccountArgs["where"]
@@ -13,7 +14,8 @@ export default async function getAccount(
 ) {
   ctx.session!.authorize()
 
-  const account = await db.account.findOne({ where })
+  const accounts = await getAccounts({ where, take: 1 })
+  const account = accounts[0]
 
   if (!account) throw new NotFoundError()
 
