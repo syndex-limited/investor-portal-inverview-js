@@ -1,7 +1,7 @@
 import React, { PropsWithoutRef } from "react"
 import { useField, useFormikContext, ErrorMessage } from "formik"
 
-export interface LabeledTextFieldProps extends PropsWithoutRef<JSX.IntrinsicElements["input"]> {
+export interface LabelledTextFieldProps extends PropsWithoutRef<JSX.IntrinsicElements["input"]> {
   /** Field name. */
   name: string
   /** Field label. */
@@ -11,7 +11,7 @@ export interface LabeledTextFieldProps extends PropsWithoutRef<JSX.IntrinsicElem
   outerProps?: PropsWithoutRef<JSX.IntrinsicElements["div"]>
 }
 
-export const LabeledTextField = React.forwardRef<HTMLInputElement, LabeledTextFieldProps>(
+export const LabelledTextField = React.forwardRef<HTMLInputElement, LabelledTextFieldProps>(
   ({ name, label, outerProps, ...props }, ref) => {
     const [input] = useField(name)
     const { isSubmitting } = useFormikContext()
@@ -52,4 +52,4 @@ export const LabeledTextField = React.forwardRef<HTMLInputElement, LabeledTextFi
   }
 )
 
-export default LabeledTextField
+export default LabelledTextField

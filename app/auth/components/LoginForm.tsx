@@ -1,5 +1,5 @@
 import React from "react"
-import { LabeledTextField } from "app/components/LabeledTextField"
+import { LabelledTextField } from "app/components/LabelledTextField"
 import { Form, FORM_ERROR } from "app/components/Form"
 import login from "app/auth/mutations/login"
 import { LoginInput, LoginInputType } from "app/auth/validations"
@@ -16,7 +16,7 @@ export const LoginForm = (props: LoginFormProps) => {
       <Form<LoginInputType>
         submitText="Log In"
         schema={LoginInput}
-        initialValues={{ email: undefined, password: undefined }}
+        initialValues={{ email: "", password: "" }}
         onSubmit={async (values) => {
           try {
             await login({ email: values.email, password: values.password })
@@ -33,8 +33,13 @@ export const LoginForm = (props: LoginFormProps) => {
           }
         }}
       >
-        <LabeledTextField name="email" label="Email" placeholder="Email" />
-        <LabeledTextField name="password" label="Password" placeholder="Password" type="password" />
+        <LabelledTextField name="email" label="Email" placeholder="Email" />
+        <LabelledTextField
+          name="password"
+          label="Password"
+          placeholder="Password"
+          type="password"
+        />
       </Form>
     </div>
   )

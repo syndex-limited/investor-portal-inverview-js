@@ -79,7 +79,7 @@ investor-portal-interview
 │   ├── validations.ts
 │   ├── components
 │   │   ├── Form.tsx
-│   │   └── LabeledTextField.tsx
+│   │   └── LabelledTextField.tsx
 │   ├── hooks
 │   │   └── useCurrentUser.ts
 │   ├── layouts

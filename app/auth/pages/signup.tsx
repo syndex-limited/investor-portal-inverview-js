@@ -2,7 +2,7 @@ import React from "react"
 import { useRouter, BlitzPage } from "blitz"
 import Layout from "app/layouts/Layout"
 import { Form, FORM_ERROR } from "app/components/Form"
-import { LabeledTextField } from "app/components/LabeledTextField"
+import { LabelledTextField } from "app/components/LabelledTextField"
 import signup from "app/auth/mutations/signup"
 import { SignupInput, SignupInputType } from "app/auth/validations"
 
@@ -16,6 +16,7 @@ const SignupPage: BlitzPage = () => {
       <Form<SignupInputType>
         submitText="Create Account"
         schema={SignupInput}
+        initialValues={{ name: "", email: "", password: "" }}
         onSubmit={async (values) => {
           try {
             await signup({ email: values.email, password: values.password })
@@ -30,8 +31,13 @@ const SignupPage: BlitzPage = () => {
           }
         }}
       >
-        <LabeledTextField name="email" label="Email" placeholder="Email" />
-        <LabeledTextField name="password" label="Password" placeholder="Password" type="password" />
+        <LabelledTextField name="email" label="Email" placeholder="Email" />
+        <LabelledTextField
+          name="password"
+          label="Password"
+          placeholder="Password"
+          type="password"
+        />
       </Form>
     </div>
   )

@@ -8,7 +8,7 @@ type FormProps<FormValues> = {
   /** Text to display in the submit button */
   submitText: string
   onSubmit: (values: FormValues) => Promise<void | OnSubmitResult>
-  initialValues?: FormikProps<FormValues>["initialValues"]
+  initialValues: FormikProps<FormValues>["initialValues"]
   schema?: z.ZodType<any, any>
 } & Omit<PropsWithoutRef<JSX.IntrinsicElements["form"]>, "onSubmit">
 
@@ -30,7 +30,7 @@ export function Form<FormValues extends Record<string, unknown>>({
   const [formError, setFormError] = useState<string | null>(null)
   return (
     <Formik<FormValues>
-      initialValues={initialValues || ({} as FormValues)}
+      initialValues={initialValues}
       validate={(values) => {
         if (!schema) return
         try {
