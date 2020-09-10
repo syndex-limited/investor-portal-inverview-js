@@ -51,7 +51,7 @@ const AccountsPage: BlitzPage = () => {
 
         <p>
           <Link href="/accounts/new">
-            <a>Create Account</a>
+            <a className="btn-purple">Create Account</a>
           </Link>
         </p>
 

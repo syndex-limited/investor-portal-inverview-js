@@ -1,0 +1,7 @@
+.btn-purple {
+  @apply bg-purple-primary text-white font-bold py-2 px-4 rounded;
+}
+
+.btn-clear {
+  @apply font-bold py-2 px-4 rounded border-solid border-2;
+}

@@ -14,8 +14,6 @@ export default async function getIssues(
   { where, orderBy, skip = 0, take }: GetIssuesInput,
   ctx: { session?: SessionContext } = {}
 ) {
-  ctx.session!.authorize()
-
   const issues = await db.issue.findMany({
     where,
     orderBy,
