@@ -22,6 +22,8 @@ export default async function getAccounts(
     AND: inputWhere,
   }
 
+  console.log(JSON.stringify(where))
+
   const accounts = await db.account.findMany({
     where,
     orderBy,

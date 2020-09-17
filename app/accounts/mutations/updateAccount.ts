@@ -14,7 +14,7 @@ export default async function updateAccount(
 ) {
   ctx.session!.authorize()
   const data = AccountInput.parse(input)
-  const existingAccount = await getAccount({ where })
+  const existingAccount = await getAccount({ where }, ctx)
 
   const account = await db.account.update({ where: { id: existingAccount.id }, data })
 

@@ -1,5 +1,5 @@
 import { SessionContext } from "blitz"
-import db, { IssueCreateArgs } from "db"
+import db from "db"
 import { IssueInputType, IssueInput } from "../validations"
 
 type CreateIssueInput = {

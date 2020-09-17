@@ -1,6 +1,6 @@
 import React, { Suspense } from "react"
 import Layout from "app/layouts/Layout"
-import { Head, Link, useRouter, useQuery, useParam, BlitzPage } from "blitz"
+import { Head, Link, useQuery, useParam, BlitzPage } from "blitz"
 import getIssue from "app/issues/queries/getIssue"
 
 export const Issue = () => {
