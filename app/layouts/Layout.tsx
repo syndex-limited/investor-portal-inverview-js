@@ -49,7 +49,7 @@ const Header = (props) => (
     </div>
     <div className="block flex-grow flex tems-center">
       <div className="text-sm flex-grow flex items-center">
-        <Link href="/issues">
+        <Link href="/">
           <a className="inline-block hover:text-gray-dark mr-4">Issues</a>
         </Link>
 

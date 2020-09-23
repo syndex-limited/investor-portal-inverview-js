@@ -29,7 +29,7 @@ const NewIssuePage: BlitzPage = () => {
         />
 
         <p>
-          <Link href="/issues">
+          <Link href="/">
             <a>Issues</a>
           </Link>
         </p>
